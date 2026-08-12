@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="لوحة بسيطة لإدارة المنتجات">
+    <title>إدارة المنتجات</title>
+    <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+    <main class="page-shell">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Test ASP.NET API</p>
+                <h1>إدارة المنتجات</h1>
+                <p class="hero-copy">واجهة بسيطة ونظيفة متصلة مباشرةً بـ ASP.NET Core وMariaDB.</p>
+            </div>
+            <div class="status-card" aria-live="polite">
+                <span class="status-dot"></span>
+                <span id="connection-status">جاري الاتصال…</span>
+            </div>
+        </header>
+
+        <section class="workspace" aria-label="إدارة المنتجات">
+            <article class="panel form-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-label">بيانات المنتج</p>
+                        <h2 id="form-title">إضافة منتج جديد</h2>
+                    </div>
+                    <button id="cancel-edit" class="button button-ghost is-hidden" type="button">إلغاء</button>
+                </div>
+
+                <form id="product-form" novalidate>
+                    <input id="product-id" type="hidden">
+
+                    <label for="product-name">اسم المنتج</label>
+                    <input id="product-name" type="text" maxlength="120" placeholder="مثال: لوحة مفاتيح" required>
+                    <small class="field-error" id="name-error"></small>
+
+                    <label for="product-price">السعر</label>
+                    <div class="price-field">
+                        <input id="product-price" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+                        <span>USD</span>
+                    </div>
+                    <small class="field-error" id="price-error"></small>
+
+                    <button id="submit-button" class="button button-primary" type="submit">حفظ المنتج</button>
+                    <p id="form-message" class="form-message" role="status"></p>
+                </form>
+            </article>
+
+            <article class="panel products-panel">
+                <div class="panel-heading products-heading">
+                    <div>
+                        <p class="section-label">قاعدة البيانات</p>
+                        <h2>قائمة المنتجات</h2>
+                    </div>
+                    <span id="products-count" class="count-badge">0 منتجات</span>
+                </div>
+
+                <div id="loading-state" class="empty-state">جاري تحميل المنتجات…</div>
+                <div id="empty-state" class="empty-state is-hidden">لا توجد منتجات بعد. أضف أول منتج.</div>
+
+                <div id="products-table-wrapper" class="table-wrapper is-hidden">
+                    <table>
+                        <thead><tr><th>المنتج</th><th>السعر</th><th>الإجراءات</th></tr></thead>
+                        <tbody id="products-table-body"></tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <template id="product-row-template">
+        <tr>
+            <td class="product-name"></td>
+            <td class="product-price"></td>
+            <td class="actions">
+                <button class="icon-button edit-button" type="button">تعديل</button>
+                <button class="icon-button delete-button" type="button">حذف</button>
+            </td>
+        </tr>
+    </template>
+
+    <script type="module" src="/assets/js/products.js"></script>
+</body>
+</html>
