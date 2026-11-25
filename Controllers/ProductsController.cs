@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TestAspApi.Contracts.Products;
-using TestAspApi.Services.Products;
+using InventoryHub.Api.Contracts.Products;
+using InventoryHub.Api.Services.Products;
 
-namespace TestAspApi.Controllers;
+namespace InventoryHub.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/products")]
 public sealed class ProductsController(IProductService productService) : ControllerBase

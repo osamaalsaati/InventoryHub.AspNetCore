@@ -1,88 +1,70 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="لوحة بسيطة لإدارة المنتجات">
-    <title>إدارة المنتجات</title>
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <meta name="description" content="A new digital experience is coming soon.">
+    <meta name="theme-color" content="#070912">
+    <title>Coming Soon — InventoryHub</title>
+    <link rel="stylesheet" href="/assets/css/coming-soon.css?v=2">
 </head>
 <body>
-    <main class="page-shell">
-        <header class="hero">
-            <div>
-                <p class="eyebrow">Test ASP.NET API</p>
-                <h1>إدارة المنتجات</h1>
-                <p class="hero-copy">واجهة بسيطة ونظيفة متصلة مباشرةً بـ ASP.NET Core وMariaDB.</p>
+    <div class="background" aria-hidden="true">
+        <span class="aurora aurora-one"></span>
+        <span class="aurora aurora-two"></span>
+        <span class="grid"></span>
+    </div>
+
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="InventoryHub home">
+            <span class="brand-mark"><i></i></span>
+            <span>TEST<span>ASP</span></span>
+        </a>
+        <div class="status"><i></i> In development</div>
+    </header>
+
+    <main class="page-content">
+        <section class="orbital" aria-hidden="true">
+            <div class="orbit orbit-one"><i></i></div>
+            <div class="orbit orbit-two"><i></i></div>
+            <div class="planet"><span>SOON</span></div>
+        </section>
+
+        <section class="hero-copy">
+            <p class="eyebrow"><span>01</span> Something new is taking shape</p>
+            <h1><span>WE'RE BUILDING</span><span>THE FUTURE.</span></h1>
+            <p class="lead">A focused, fast, and thoughtfully crafted digital experience is on its way. We are polishing every detail before launch.</p>
+
+            <div class="countdown" aria-label="Countdown to launch">
+                <div class="time-unit"><strong id="days">00</strong><span>Days</span></div>
+                <span class="divider">:</span>
+                <div class="time-unit"><strong id="hours">00</strong><span>Hours</span></div>
+                <span class="divider">:</span>
+                <div class="time-unit"><strong id="minutes">00</strong><span>Minutes</span></div>
+                <span class="divider">:</span>
+                <div class="time-unit"><strong id="seconds">00</strong><span>Seconds</span></div>
             </div>
-            <div class="status-card" aria-live="polite">
-                <span class="status-dot"></span>
-                <span id="connection-status">جاري الاتصال…</span>
-            </div>
-        </header>
 
-        <section class="workspace" aria-label="إدارة المنتجات">
-            <article class="panel form-panel">
-                <div class="panel-heading">
-                    <div>
-                        <p class="section-label">بيانات المنتج</p>
-                        <h2 id="form-title">إضافة منتج جديد</h2>
-                    </div>
-                    <button id="cancel-edit" class="button button-ghost is-hidden" type="button">إلغاء</button>
+            <form id="notify-form" class="notify-form" novalidate>
+                <label class="sr-only" for="email">Email address</label>
+                <div class="input-group">
+                    <input id="email" type="email" autocomplete="email" placeholder="Enter your email address" required>
+                    <button type="submit">Notify me <span aria-hidden="true">↗</span></button>
                 </div>
-
-                <form id="product-form" novalidate>
-                    <input id="product-id" type="hidden">
-
-                    <label for="product-name">اسم المنتج</label>
-                    <input id="product-name" type="text" maxlength="120" placeholder="مثال: لوحة مفاتيح" required>
-                    <small class="field-error" id="name-error"></small>
-
-                    <label for="product-price">السعر</label>
-                    <div class="price-field">
-                        <input id="product-price" type="number" min="0.01" step="0.01" placeholder="0.00" required>
-                        <span>USD</span>
-                    </div>
-                    <small class="field-error" id="price-error"></small>
-
-                    <button id="submit-button" class="button button-primary" type="submit">حفظ المنتج</button>
-                    <p id="form-message" class="form-message" role="status"></p>
-                </form>
-            </article>
-
-            <article class="panel products-panel">
-                <div class="panel-heading products-heading">
-                    <div>
-                        <p class="section-label">قاعدة البيانات</p>
-                        <h2>قائمة المنتجات</h2>
-                    </div>
-                    <span id="products-count" class="count-badge">0 منتجات</span>
-                </div>
-
-                <div id="loading-state" class="empty-state">جاري تحميل المنتجات…</div>
-                <div id="empty-state" class="empty-state is-hidden">لا توجد منتجات بعد. أضف أول منتج.</div>
-
-                <div id="products-table-wrapper" class="table-wrapper is-hidden">
-                    <table>
-                        <thead><tr><th>المنتج</th><th>السعر</th><th>الإجراءات</th></tr></thead>
-                        <tbody id="products-table-body"></tbody>
-                    </table>
-                </div>
-            </article>
+                <p id="form-message" class="form-message" role="status">Be the first to know when we launch. No spam.</p>
+            </form>
         </section>
     </main>
 
-    <template id="product-row-template">
-        <tr>
-            <td class="product-name"></td>
-            <td class="product-price"></td>
-            <td class="actions">
-                <button class="icon-button edit-button" type="button">تعديل</button>
-                <button class="icon-button delete-button" type="button">حذف</button>
-            </td>
-        </tr>
-    </template>
+    <footer class="site-footer">
+        <p>© <span id="current-year"></span> InventoryHub</p>
+        <div class="progress">
+            <span>Project progress</span>
+            <div class="progress-track"><i></i></div>
+            <strong>78%</strong>
+        </div>
+    </footer>
 
-    <script type="module" src="/assets/js/products.js"></script>
+    <script type="module" src="/assets/js/coming-soon.js?v=2"></script>
 </body>
 </html>

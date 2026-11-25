@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TestAspApi.Models;
+using InventoryHub.Api.Models;
 
-namespace TestAspApi.Data;
+namespace InventoryHub.Api.Data;
 
 public class AppDbContext : DbContext
 {

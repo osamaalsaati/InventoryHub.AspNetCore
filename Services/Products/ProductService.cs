@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using TestAspApi.Contracts.Products;
-using TestAspApi.Data;
-using TestAspApi.Models;
+using InventoryHub.Api.Contracts.Products;
+using InventoryHub.Api.Data;
+using InventoryHub.Api.Models;
 
-namespace TestAspApi.Services.Products;
+namespace InventoryHub.Api.Services.Products;
 
 public sealed class ProductService(AppDbContext dbContext) : IProductService
 {

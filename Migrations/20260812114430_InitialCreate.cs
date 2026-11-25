@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TestAspApi.Migrations
+namespace InventoryHub.Api.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

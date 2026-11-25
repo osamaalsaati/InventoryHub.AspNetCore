@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+    <title>لوحة إدارة المنتجات</title>
+    <link rel="stylesheet" href="/assets/css/admin.css?v=1">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="/admin/">
+            <span class="brand-mark">T</span>
+            <span>InventoryHub</span>
+        </a>
+
+        <nav aria-label="القائمة الرئيسية">
+            <a class="nav-link active" href="/admin/">
+                <span aria-hidden="true">▦</span>
+                المنتجات
+            </a>
+            <a class="nav-link" href="/" target="_blank">
+                <span aria-hidden="true">↗</span>
+                عرض الموقع
+            </a>
+            <a class="nav-link" href="/swagger" target="_blank">
+                <span aria-hidden="true">⌁</span>
+                Swagger API
+            </a>
+            <button id="logout-button" class="nav-link nav-button" type="button">
+                <span aria-hidden="true">⇥</span>
+                تسجيل الخروج
+            </button>
+        </nav>
+
+        <div class="api-status">
+            <i id="status-dot"></i>
+            <div>
+                <strong>حالة النظام</strong>
+                <span id="api-status-text">جاري الاتصال...</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">Dashboard / Products</p>
+                <h1>إدارة المنتجات</h1>
+                <p>أضف المنتجات وعدّلها واحذفها من مكان واحد.</p>
+            </div>
+            <button id="open-create-button" class="button button-primary" type="button">
+                <span aria-hidden="true">＋</span>
+                منتج جديد
+            </button>
+        </header>
+
+        <section class="stats" aria-label="الإحصائيات">
+            <article class="stat-card">
+                <span class="stat-icon purple">▦</span>
+                <div><p>عدد المنتجات</p><strong id="products-count">—</strong></div>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon green">$</span>
+                <div><p>إجمالي القيمة</p><strong id="total-value">—</strong></div>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon blue">✓</span>
+                <div><p>حالة قاعدة البيانات</p><strong id="database-status">فحص...</strong></div>
+            </article>
+        </section>
+
+        <section class="workspace">
+            <article id="product-form-card" class="panel form-card is-hidden">
+                <div class="panel-header">
+                    <div>
+                        <p class="section-label">بيانات المنتج</p>
+                        <h2 id="form-title">إضافة منتج جديد</h2>
+                    </div>
+                    <button id="close-form-button" class="icon-button" type="button" aria-label="إغلاق">×</button>
+                </div>
+
+                <form id="product-form" novalidate>
+                    <input id="product-id" type="hidden">
+
+                    <label for="product-name">اسم المنتج</label>
+                    <input id="product-name" type="text" maxlength="120" placeholder="مثال: شاشة كمبيوتر" required>
+                    <small id="name-error" class="field-error"></small>
+
+                    <label for="product-price">السعر</label>
+                    <div class="price-input">
+                        <input id="product-price" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+                        <span>USD</span>
+                    </div>
+                    <small id="price-error" class="field-error"></small>
+
+                    <div class="form-actions">
+                        <button id="save-button" class="button button-primary" type="submit">حفظ المنتج</button>
+                        <button id="cancel-button" class="button button-secondary" type="button">إلغاء</button>
+                    </div>
+                </form>
+            </article>
+
+            <article class="panel products-card">
+                <div class="panel-header list-header">
+                    <div>
+                        <p class="section-label">Products</p>
+                        <h2>قائمة المنتجات</h2>
+                    </div>
+                    <div class="search-box">
+                        <span aria-hidden="true">⌕</span>
+                        <input id="search-input" type="search" placeholder="ابحث عن منتج...">
+                    </div>
+                </div>
+
+                <div id="loading-state" class="state-message">
+                    <span class="spinner"></span>
+                    جاري تحميل المنتجات...
+                </div>
+                <div id="error-state" class="state-message error is-hidden"></div>
+                <div id="empty-state" class="state-message is-hidden">لا توجد منتجات حاليًا.</div>
+
+                <div id="table-wrapper" class="table-wrapper is-hidden">
+                    <table>
+                        <thead>
+                            <tr><th>#</th><th>اسم المنتج</th><th>السعر</th><th>الإجراءات</th></tr>
+                        </thead>
+                        <tbody id="products-body"></tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <template id="product-row-template">
+        <tr>
+            <td class="product-id"></td>
+            <td><div class="product-cell"><span class="product-avatar"></span><strong class="product-name"></strong></div></td>
+            <td class="product-price"></td>
+            <td><div class="row-actions"><button class="action-button edit" type="button">تعديل</button><button class="action-button delete" type="button">حذف</button></div></td>
+        </tr>
+    </template>
+
+    <script type="module" src="/assets/js/admin-products.js?v=1"></script>
+</body>
+</html>

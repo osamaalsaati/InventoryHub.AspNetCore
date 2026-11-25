@@ -1,4 +1,4 @@
-namespace TestAspApi.Models;
+namespace InventoryHub.Api.Models;
 
 public class Product
 {

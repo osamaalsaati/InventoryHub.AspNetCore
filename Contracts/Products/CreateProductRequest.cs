@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TestAspApi.Contracts.Products;
+namespace InventoryHub.Api.Contracts.Products;
 
 public sealed class CreateProductRequest
 {

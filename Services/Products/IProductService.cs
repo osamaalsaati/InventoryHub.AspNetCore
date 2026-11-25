@@ -1,6 +1,6 @@
-using TestAspApi.Contracts.Products;
+using InventoryHub.Api.Contracts.Products;
 
-namespace TestAspApi.Services.Products;
+namespace InventoryHub.Api.Services.Products;
 
 public interface IProductService
 {
